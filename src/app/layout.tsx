@@ -30,7 +30,7 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
         >
-          <div className="relative flex min-h-screen flex-col">
+          <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col">
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
