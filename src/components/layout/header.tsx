@@ -75,15 +75,14 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 items-center">
-        <div className="flex items-center gap-4">
+        <div className="mr-auto flex items-center gap-4 md:mr-0">
           <Link href="/" className="flex items-center gap-2">
             <Hammer className="h-6 w-6 text-primary" />
             <span className="hidden font-bold font-headline sm:inline-block">ForgeFinder</span>
           </Link>
         </div>
 
-        <div className="flex flex-1 justify-center md:flex">
-            <NavigationMenu>
+        <NavigationMenu className="hidden md:flex flex-1 justify-center">
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>Produkty</NavigationMenuTrigger>
@@ -102,7 +101,7 @@ export function Header() {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <Link href="/deals" legacyBehavior={false} passHref>
+                  <Link href="/deals" legacyBehavior passHref>
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                       Okazje
                     </NavigationMenuLink>
@@ -110,9 +109,8 @@ export function Header() {
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
-        </div>
 
-        <div className="flex items-center justify-end space-x-2">
+        <div className="flex items-center justify-end space-x-2 ml-auto">
           <Button variant="ghost" size="icon" asChild>
             <Link href="/search">
               <Search className="h-5 w-5" />
@@ -154,7 +152,8 @@ const ListItem = React.forwardRef<
   return (
     <li>
       <NavigationMenuLink asChild>
-        <a
+        <Link
+          href={props.href || "#"}
           ref={ref}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
@@ -166,7 +165,7 @@ const ListItem = React.forwardRef<
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
-        </a>
+        </Link>
       </NavigationMenuLink>
     </li>
   );
