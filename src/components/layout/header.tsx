@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Search, User, Hammer, Menu } from "lucide-react";
+import { Search, User, Hammer, Menu, LogOut, Settings, LayoutGrid } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import {
@@ -13,6 +13,16 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 import { cn } from "@/lib/utils";
 import React from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -39,6 +49,16 @@ const components: { title: string; href: string; description: string }[] = [
     href: "/products/fashion",
     description: "Stylowa odzież i obuwie w najlepszych cenach.",
   },
+  {
+    title: "Sport i Turystyka",
+    href: "/products/sports",
+    description: "Sprzęt do ćwiczeń, odzież sportowa i akcesoria podróżne.",
+  },
+  {
+    title: "Zdrowie i Uroda",
+    href: "/products/health",
+    description: "Kosmetyki, suplementy i urządzenia do pielęgnacji.",
+  }
 ];
 
 export function Header() {
@@ -74,8 +94,8 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 items-center">
-        <div className="mr-6 flex items-center">
+      <div className="container flex h-16 items-center">
+        <div className="mr-4 flex items-center">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button
@@ -87,7 +107,7 @@ export function Header() {
                 <span className="sr-only">Otwórz menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="p-0">
+            <SheetContent side="left" className="p-4">
               {mobileNavLinks}
             </SheetContent>
           </Sheet>
@@ -103,8 +123,23 @@ export function Header() {
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Produkty</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                    {components.map((component) => (
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                    <li className="row-span-3">
+                      <NavigationMenuLink asChild>
+                        <a
+                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                          href="/"
+                        >
+                          <div className="mb-2 mt-4 text-lg font-medium">
+                            Wszystkie Produkty
+                          </div>
+                          <p className="text-sm leading-tight text-muted-foreground">
+                            Przeglądaj pełen katalog zweryfikowanych produktów.
+                          </p>
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                    {components.slice(0, 3).map((component) => (
                       <ListItem
                         key={component.title}
                         title={component.title}
@@ -113,13 +148,13 @@ export function Header() {
                         {component.description}
                       </ListItem>
                     ))}
-                  </div>
+                  </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/deals" legacyBehavior passHref>
-                  <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                    <a>Okazje</a>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    Okazje
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
@@ -127,20 +162,50 @@ export function Header() {
           </NavigationMenu>
         </div>
 
-        <div className="flex items-center space-x-2">
+        <div className="flex flex-1 items-center justify-end space-x-2">
           <Button variant="ghost" size="icon" asChild>
             <Link href="/search">
               <Search className="h-5 w-5" />
               <span className="sr-only">Szukaj</span>
             </Link>
           </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <Link href="/profile/1">
-              <User className="h-5 w-5" />
-              <span className="sr-only">Profil</span>
-            </Link>
-          </Button>
           <ThemeToggle />
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                <Avatar className="h-8 w-8">
+                   <AvatarImage src="https://picsum.photos/seed/main-avatar/100/100" alt="@shadcn" />
+                   <AvatarFallback>U</AvatarFallback>
+                </Avatar>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56" align="end" forceMount>
+              <DropdownMenuLabel className="font-normal">
+                <div className="flex flex-col space-y-1">
+                  <p className="text-sm font-medium leading-none">SuperUser</p>
+                  <p className="text-xs leading-none text-muted-foreground">
+                    user@example.com
+                  </p>
+                </div>
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem asChild>
+                <Link href="/profile/1"><User className="mr-2" />Profil</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/admin"><LayoutGrid className="mr-2" />Panel Admina</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Settings className="mr-2" />
+                <span>Ustawienia</span>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <LogOut className="mr-2" />
+                <span>Wyloguj</span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </header>
