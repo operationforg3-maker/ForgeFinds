@@ -44,18 +44,18 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 items-center">
-        <div className="mr-6 flex items-center">
+        <div className="mr-auto flex items-center">
           <Link href="/" className="flex items-center gap-2">
             <Hammer className="h-6 w-6 text-primary" />
             <span className="font-bold font-headline">ForgeFinder</span>
           </Link>
         </div>
-        <NavigationMenu>
+        <NavigationMenu className="hidden md:flex">
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger>Produkty</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="grid w-[600px] gap-3 p-4 md:w-[700px] md:grid-cols-2 lg:w-[800px] ">
+                <div className="grid w-screen gap-3 p-4 md:w-[700px] md:grid-cols-2 lg:w-[800px] ">
                   {components.map((component) => (
                     <ListItem
                       key={component.title}
@@ -78,7 +78,7 @@ export function Header() {
           </NavigationMenuList>
         </NavigationMenu>
 
-        <div className="flex flex-1 items-center justify-end space-x-2">
+        <div className="ml-auto flex items-center justify-end space-x-2">
           <Button variant="ghost" size="icon" asChild>
             <Link href="/search">
               <Search className="h-5 w-5" />

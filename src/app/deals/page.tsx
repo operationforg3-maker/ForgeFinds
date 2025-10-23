@@ -10,7 +10,7 @@ import {
 
 export default function DealsPage() {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container py-8">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <PageHeader
           title="Okazje"

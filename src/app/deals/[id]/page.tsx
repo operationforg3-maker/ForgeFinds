@@ -29,7 +29,7 @@ export default function DealDetailPage({ params }: { params: { id: string } }) {
   ];
 
   return (
-    <div className="container mx-auto max-w-6xl px-4 py-8">
+    <div className="container max-w-6xl py-8">
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
         <div className="md:col-span-2">
           <Card className="overflow-hidden">

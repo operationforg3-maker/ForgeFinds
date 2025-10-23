@@ -9,7 +9,7 @@ import { DealCard } from "@/components/deal-card";
 
 export default function SearchPage() {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container py-8">
       <PageHeader
         title="Wyszukiwarka"
         subtitle="Znajdź interesujące Cię produkty i okazje."
