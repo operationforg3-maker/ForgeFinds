@@ -14,7 +14,7 @@ import { Slider } from "@/components/ui/slider";
 
 export default function ProductsPage() {
   return (
-    <div className="container py-8">
+    <div className="container mx-auto py-8">
       <PageHeader
         title="Produkty"
         subtitle="Przeglądaj wszystkie dostępne produkty w naszym katalogu."

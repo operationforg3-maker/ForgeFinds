@@ -52,7 +52,7 @@ export default function ProductDetailPage({
   ];
 
   return (
-    <div className="container max-w-6xl py-8">
+    <div className="container mx-auto max-w-6xl py-8">
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         <div>
           <Card className="overflow-hidden">

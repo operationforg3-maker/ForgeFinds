@@ -3,7 +3,7 @@ import { DealCard } from "@/components/deal-card";
 
 export default function Home() {
   return (
-    <div className="container py-8">
+    <div className="container mx-auto py-8">
       <section className="mb-12">
         <h2 className="mb-6 text-3xl font-bold tracking-tight">
           Polecane Produkty

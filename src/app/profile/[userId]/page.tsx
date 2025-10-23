@@ -25,7 +25,7 @@ export default function ProfilePage({
   ];
 
   return (
-    <div className="container py-8">
+    <div className="container mx-auto py-8">
       <Card className="mb-8">
         <CardContent className="flex flex-col items-center gap-6 p-6 text-center md:flex-row md:text-left">
           <Avatar className="h-24 w-24 border-4 border-primary">
