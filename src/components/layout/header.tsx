@@ -76,14 +76,14 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 items-center">
-        <div className="mr-auto flex items-center gap-4 md:mr-0">
+        <div className="mr-4 flex items-center">
           <Link href="/" className="flex items-center gap-2">
             <Hammer className="h-6 w-6 text-primary" />
             <span className="hidden font-bold font-headline sm:inline-block">ForgeFinder</span>
           </Link>
         </div>
 
-        <NavigationMenu className="hidden md:flex flex-1 justify-center">
+        <NavigationMenu className="hidden md:flex">
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger>Produkty</NavigationMenuTrigger>
@@ -102,7 +102,7 @@ export function Header() {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/deals" passHref>
+              <Link href="/deals" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   Okazje
                 </NavigationMenuLink>
@@ -111,7 +111,7 @@ export function Header() {
           </NavigationMenuList>
         </NavigationMenu>
 
-        <div className="flex items-center justify-end space-x-2 ml-auto">
+        <div className="flex flex-1 items-center justify-end space-x-2">
           <Button variant="ghost" size="icon" asChild>
             <Link href="/search">
               <Search className="h-5 w-5" />
