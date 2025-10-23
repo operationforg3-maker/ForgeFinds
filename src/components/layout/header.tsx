@@ -95,7 +95,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
-        <div className="mr-4 flex items-center">
+        <div className="mr-4 flex">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button
@@ -117,7 +117,7 @@ export function Header() {
           </Link>
         </div>
 
-        <div className="hidden flex-1 justify-center md:flex">
+        <div className="hidden flex-1 md:flex justify-center">
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -152,9 +152,9 @@ export function Header() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/deals" passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Okazje
+                <Link href="/deals" legacyBehavior={false} passHref>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                    <a>Okazje</a>
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
