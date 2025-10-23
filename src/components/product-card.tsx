@@ -18,7 +18,7 @@ export function ProductCard({ id, seed }: ProductCardProps) {
   return (
     <Card className="flex h-full flex-col overflow-hidden transition-shadow hover:shadow-lg">
       <CardHeader className="p-0">
-        <Link href={`/products/${id}`} className="block">
+        <Link href={`/products/${id}`}>
           <Image
             src={`https://picsum.photos/seed/${seed}/600/400`}
             alt="Product image"

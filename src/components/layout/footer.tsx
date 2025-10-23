@@ -12,21 +12,18 @@ export function Footer() {
           <Link
             href="#"
             className="text-sm hover:underline underline-offset-4"
-            prefetch={false}
           >
             O nas
           </Link>
           <Link
             href="#"
             className="text-sm hover:underline underline-offset-4"
-            prefetch={false}
           >
             Kontakt
           </Link>
           <Link
             href="#"
             className="text-sm hover:underline underline-offset-4"
-            prefetch={false}
           >
             Polityka Prywatności
           </Link>

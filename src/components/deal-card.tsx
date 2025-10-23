@@ -21,7 +21,7 @@ export function DealCard({ id, seed }: DealCardProps) {
   return (
     <Card className="flex h-full flex-col overflow-hidden transition-shadow hover:shadow-lg">
       <CardHeader className="relative p-0">
-        <Link href={`/deals/${id}`} className="block">
+        <Link href={`/deals/${id}`}>
           <Image
             src={`https://picsum.photos/seed/${seed}/600/400`}
             alt="Deal image"
