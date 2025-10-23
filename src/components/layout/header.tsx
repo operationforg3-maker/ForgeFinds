@@ -152,7 +152,7 @@ export function Header() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/deals" legacyBehavior passHref>
+                <Link href="/deals" passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Okazje
                   </NavigationMenuLink>
